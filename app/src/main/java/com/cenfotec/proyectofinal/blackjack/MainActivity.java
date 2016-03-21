@@ -1,5 +1,7 @@
 package com.cenfotec.proyectofinal.blackjack;
 
+import com.cenfotec.proyectofinal.blackjack.model.*;
+import com.cenfotec.proyectofinal.blackjack.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
