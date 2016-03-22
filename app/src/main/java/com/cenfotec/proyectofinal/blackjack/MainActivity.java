@@ -1,9 +1,9 @@
 package com.cenfotec.proyectofinal.blackjack;
 
 import com.cenfotec.proyectofinal.blackjack.model.*;
-import com.cenfotec.proyectofinal.blackjack.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,5 +11,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Baraja baraja1 = new Baraja();
+        Baraja baraja2 = new Baraja();
+        Baraja baraja3 = new Baraja();
+
+        Log.d("", "baraja");
+
     }
 }

@@ -13,21 +13,21 @@
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/club_a"/>
+        android:src="@drawable/trebol_a"/>
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/diamond_a"/>
+        android:src="@drawable/diamante_a"/>
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/heart_a"/>
+        android:src="@drawable/corazon_a"/>
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/spade_a"/>
+        android:src="@drawable/espada_a"/>
 
 </LinearLayout>
