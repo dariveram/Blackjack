@@ -12,10 +12,11 @@ import java.util.Collections;
  */
 public class Baraja {
 
+    private boolean editable;
     private ArrayList<Carta> baraja;
 
     public ArrayList<Carta> getBaraja() {
-        return baraja;
+        return this.baraja;
     }
 
     public Baraja() {
@@ -23,75 +24,146 @@ public class Baraja {
     }
 
     public Baraja(ArrayList<Carta> baraja) {
+        this.editable = true;
         this.baraja = baraja;
     }
 
     private void initialize(){
-        baraja = new ArrayList<>();
+        this.editable = false;
+        this.baraja = new ArrayList<>();
         generarBaraja();
         revolverBaraja();
     }
 
     private void generarBaraja(){
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_2, CartaValor.DOS));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_3, CartaValor.TRES));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_4, CartaValor.CUATRO));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_5, CartaValor.CINCO));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_6, CartaValor.SEIS));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_7, CartaValor.SIETE));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_8, CartaValor.OCHO));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_9, CartaValor.NUEVE));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_10, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_J, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_Q, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_K, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_A, CartaValor.ONCE));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_2, CartaValor.DOS));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_3, CartaValor.TRES));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_4, CartaValor.CUATRO));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_5, CartaValor.CINCO));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_6, CartaValor.SEIS));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_7, CartaValor.SIETE));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_8, CartaValor.OCHO));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_9, CartaValor.NUEVE));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_10, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_J, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_Q, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_K, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.CORAZON, CartaNombre.CN_A, CartaValor.ONCE));
 
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_2, CartaValor.DOS));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_3, CartaValor.TRES));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_4, CartaValor.CUATRO));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_5, CartaValor.CINCO));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_6, CartaValor.SEIS));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_7, CartaValor.SIETE));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_8, CartaValor.OCHO));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_9, CartaValor.NUEVE));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_10, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_J, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_Q, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_K, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_A, CartaValor.ONCE));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_2, CartaValor.DOS));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_3, CartaValor.TRES));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_4, CartaValor.CUATRO));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_5, CartaValor.CINCO));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_6, CartaValor.SEIS));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_7, CartaValor.SIETE));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_8, CartaValor.OCHO));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_9, CartaValor.NUEVE));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_10, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_J, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_Q, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_K, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.DIAMANTE, CartaNombre.CN_A, CartaValor.ONCE));
 
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_2, CartaValor.DOS));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_3, CartaValor.TRES));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_4, CartaValor.CUATRO));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_5, CartaValor.CINCO));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_6, CartaValor.SEIS));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_7, CartaValor.SIETE));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_8, CartaValor.OCHO));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_9, CartaValor.NUEVE));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_10, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_J, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_Q, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_K, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_A, CartaValor.ONCE));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_2, CartaValor.DOS));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_3, CartaValor.TRES));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_4, CartaValor.CUATRO));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_5, CartaValor.CINCO));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_6, CartaValor.SEIS));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_7, CartaValor.SIETE));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_8, CartaValor.OCHO));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_9, CartaValor.NUEVE));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_10, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_J, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_Q, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_K, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.ESPADA, CartaNombre.CN_A, CartaValor.ONCE));
 
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_2, CartaValor.DOS));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_3, CartaValor.TRES));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_4, CartaValor.CUATRO));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_5, CartaValor.CINCO));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_6, CartaValor.SEIS));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_7, CartaValor.SIETE));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_8, CartaValor.OCHO));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_9, CartaValor.NUEVE));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_10, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_J, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_Q, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_K, CartaValor.DIEZ));
-        baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_A, CartaValor.ONCE));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_2, CartaValor.DOS));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_3, CartaValor.TRES));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_4, CartaValor.CUATRO));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_5, CartaValor.CINCO));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_6, CartaValor.SEIS));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_7, CartaValor.SIETE));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_8, CartaValor.OCHO));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_9, CartaValor.NUEVE));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_10, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_J, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_Q, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_K, CartaValor.DIEZ));
+        this.baraja.add(new Carta(CartaTipo.TREBOL, CartaNombre.CN_A, CartaValor.ONCE));
     }
 
-    private void revolverBaraja(){
+    public void revolverBaraja(){
         Collections.shuffle(this.baraja);
+    }
+
+    public Carta obtenerCartaBaraja(int i){
+        return this.baraja.get(i);
+    }
+
+    public void agregarCartaBaraja(Carta carta){
+        if (editable){
+            this.baraja.add(carta);
+        }
+    }
+
+    public void eliminarCartaBaraja(Carta carta){
+        if (editable){
+            this.baraja.remove(carta);
+        }
+    }
+
+    public void eliminarCartaBaraja(int i){
+        if (editable){
+            this.baraja.remove(i);
+        }
+    }
+
+    public int contarCartasBaraja(){
+        int total = 0;
+        for(int i=0; i<this.baraja.size(); i++){
+            int valor;
+            switch (this.baraja.get(i).getValor()){
+                case UNO:
+                    valor = 1;
+                    break;
+                case DOS:
+                    valor = 2;
+                    break;
+                case TRES:
+                    valor = 3;
+                    break;
+                case CUATRO:
+                    valor = 4;
+                    break;
+                case CINCO:
+                    valor = 5;
+                    break;
+                case SEIS:
+                    valor = 6;
+                    break;
+                case SIETE:
+                    valor = 7;
+                    break;
+                case OCHO:
+                    valor = 8;
+                    break;
+                case NUEVE:
+                    valor = 9;
+                    break;
+                case DIEZ:
+                    valor = 10;
+                    break;
+                case ONCE:
+                    valor = 11;
+                    break;
+                default:
+                    valor = 0;
+                    break;
+            }
+            total += valor;
+        }
+        return total;
     }
 
 }
