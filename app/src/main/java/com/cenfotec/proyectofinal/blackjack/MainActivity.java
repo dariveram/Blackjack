@@ -1,11 +1,12 @@
 package com.cenfotec.proyectofinal.blackjack;
 
-import com.cenfotec.proyectofinal.blackjack.model.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import java.util.ArrayList;
+import com.cenfotec.proyectofinal.blackjack.model.Carta;
+import com.cenfotec.proyectofinal.blackjack.model.Jugador;
+import com.cenfotec.proyectofinal.blackjack.model.Repartidor;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,24 +15,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Baraja baraja1 = new Baraja();
-        Baraja baraja2 = new Baraja();
-        Baraja baraja3 = new Baraja();
-        Baraja baraja4 = new Baraja();
+        Repartidor r = new Repartidor(4);
+        r.Baraja().contarCartasBaraja();
 
-        Baraja baraja = new Baraja(new ArrayList<Carta>());
-
-        for(int i=0; i<baraja1.getBaraja().size(); i++){
-            baraja.agregarCartaBaraja(baraja1.obtenerCartaBaraja(i));
-            baraja.agregarCartaBaraja(baraja2.obtenerCartaBaraja(i));
-            baraja.agregarCartaBaraja(baraja3.obtenerCartaBaraja(i));
-            baraja.agregarCartaBaraja(baraja4.obtenerCartaBaraja(i));
+        for (Carta c:r.Baraja().obtenerBaraja()){
+            String s = c.getTipo() + "|" + c.getNombre() + "|" + c.getValor() + "|" + c.getImagen();
+            Log.d("baraja", s);
         }
 
-        baraja.revolverBaraja();
-        baraja.contarCartasBaraja();
-
-        Log.d("", "baraja");
+        Jugador j = new Jugador();
+        int t = j.Baraja().contarCartasBaraja();
+        Log.d("baraja", Integer.toString(t));
 
     }
 }

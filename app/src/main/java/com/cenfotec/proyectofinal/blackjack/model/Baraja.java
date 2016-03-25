@@ -12,10 +12,9 @@ import java.util.Collections;
  */
 public class Baraja {
 
-    private boolean editable;
     private ArrayList<Carta> baraja;
 
-    public ArrayList<Carta> getBaraja() {
+    public ArrayList<Carta> obtenerBaraja() {
         return this.baraja;
     }
 
@@ -24,12 +23,10 @@ public class Baraja {
     }
 
     public Baraja(ArrayList<Carta> baraja) {
-        this.editable = true;
         this.baraja = baraja;
     }
 
-    private void initialize(){
-        this.editable = false;
+    public void initialize(){
         this.baraja = new ArrayList<>();
         generarBaraja();
         revolverBaraja();
@@ -102,28 +99,23 @@ public class Baraja {
     }
 
     public void agregarCartaBaraja(Carta carta){
-        if (editable){
-            this.baraja.add(carta);
-        }
+        this.baraja.add(carta);
     }
 
     public void eliminarCartaBaraja(Carta carta){
-        if (editable){
-            this.baraja.remove(carta);
-        }
+        this.baraja.remove(carta);
     }
 
     public void eliminarCartaBaraja(int i){
-        if (editable){
-            this.baraja.remove(i);
-        }
+        this.baraja.remove(i);
     }
 
     public int contarCartasBaraja(){
         int total = 0;
-        for(int i=0; i<this.baraja.size(); i++){
+        for (Carta c:this.baraja
+             ) {
             int valor;
-            switch (this.baraja.get(i).getValor()){
+            switch (c.getValor()){
                 case UNO:
                     valor = 1;
                     break;
