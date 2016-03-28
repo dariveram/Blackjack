@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("baraja", Integer.toString(t));
 
         // prueba check-in humberto...
+        // prueba check-in david...
 
     }
 }
