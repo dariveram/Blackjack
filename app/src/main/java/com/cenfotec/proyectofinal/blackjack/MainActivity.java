@@ -27,5 +27,7 @@ public class MainActivity extends AppCompatActivity {
         int t = j.Baraja().contarCartasBaraja();
         Log.d("baraja", Integer.toString(t));
 
+        // prueba check-in humberto...
+
     }
 }
