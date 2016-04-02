@@ -13,6 +13,15 @@ import java.util.Collections;
 public class Baraja {
 
     private ArrayList<Carta> baraja;
+    private boolean mostrarPrimeraCarta;
+
+    public boolean isMostrarPrimeraCarta() {
+        return mostrarPrimeraCarta;
+    }
+
+    public void setMostrarPrimeraCarta(boolean mostrarPrimeraCarta) {
+        this.mostrarPrimeraCarta = mostrarPrimeraCarta;
+    }
 
     public ArrayList<Carta> obtenerBaraja() {
         return this.baraja;
@@ -24,10 +33,12 @@ public class Baraja {
 
     public Baraja(ArrayList<Carta> baraja) {
         this.baraja = baraja;
+        this.mostrarPrimeraCarta = false;
     }
 
     public void initialize(){
         this.baraja = new ArrayList<>();
+        this.mostrarPrimeraCarta = false;
         generarBaraja();
         revolverBaraja();
     }
@@ -156,6 +167,10 @@ public class Baraja {
             total += valor;
         }
         return total;
+    }
+
+    public int obtenerTamanoBaraja(){
+        return this.baraja.size();
     }
 
 }
