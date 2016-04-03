@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private final static int _PuntosGana = 21;
     private int contPartidas;
+    private int totalPuntos;
 
     TextView txtUsuarioNombre, txtComputadoraNombre, txtUsuarioPuntos, txtComputadoraPuntos, txtTotalPuntos, txtPartidasJugadas, txtCartasRestantes;
     ListView lvUsuario, lvComputadora;
@@ -56,8 +57,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnConfigurar = (Button)findViewById(R.id.btnConfigurar);
         btnReiniciar = (Button)findViewById(R.id.btnReiniciar);
         btnCompartir = (Button)findViewById(R.id.btnCompartir);
-
-        contPartidas = 0;
 
         cargarParametros();
         iniciarJuego();
@@ -98,6 +97,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void cargarParametros(){
         //TODO: Cargar parámetros con método de Humberto.
+        totalPuntos = 0; //Cargar puntos histórico.
+        txtTotalPuntos.setText(String.valueOf(totalPuntos));
     }
 
     private void jugar(){
@@ -138,6 +139,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         repartidor = new Repartidor(_CantidadBarajas);
         txtCartasRestantes.setText(String.valueOf(repartidor.Baraja().obtenerTamanoBaraja()));
         Toast.makeText(getApplicationContext(), "Nueva Baraja", Toast.LENGTH_SHORT).show();
+        contPartidas = 0;
+        txtPartidasJugadas.setText(String.valueOf(contPartidas));
     }
 
     private void iniciarPartida(){
@@ -231,6 +234,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (ganador.trim().toLowerCase()) {
             case "usuario":
                 //TODO
+                totalPuntos += 1;
+                txtTotalPuntos.setText(String.valueOf(totalPuntos));
                 break;
             case "computadora":
                 //TODO
