@@ -89,6 +89,17 @@
                 android:onClick="onClick"/>
 
             <Button
+                android:id="@+id/btnJugar"
+                android:text="Jugar"
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="25dp"
+                android:paddingBottom="25dp"
+                android:paddingLeft="15dp"
+                android:textSize="10sp"
+                android:onClick="onClick"/>
+
+            <Button
                 android:id="@+id/btnConfigurar"
                 android:text="Configurar"
                 android:layout_width="90dp"
@@ -126,9 +137,27 @@
                 android:text="Total Puntos"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:paddingTop="25dp"
-                android:paddingBottom="25dp"
-                android:paddingLeft="8dp"/>
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/txtPartidasJugadas"
+                android:text="Partidas"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/txtCartasRestantes"
+                android:text="Cartas"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
