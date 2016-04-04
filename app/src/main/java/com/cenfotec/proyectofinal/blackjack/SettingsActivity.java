@@ -48,13 +48,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         MinimoPuntos = (EditText) findViewById(R.id.txtMinimo);
 
 
+       /* parametro.getClass();
 
         NombreJugador.setText(parametro.NombreJugador);
         PuntosGanada.setText(parametro.PuntosGanados);
         PuntosPerdida.setText(parametro.PuntosPerdidos);
         CantBarajas.setText(parametro.CantBarajas);
         ManosBaraja.setText(parametro.CantManos);
-        MinimoPuntos.setText(parametro.MinimoPuntos);
+        MinimoPuntos.setText(parametro.MinimoPuntos);*/
 
     }
 
@@ -128,8 +129,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         try {
 
             parametro=new Parametro();
-
-            parametro.getClass();
 
             parametro.NombreJugador=NombreJugador.getText().toString();
             parametro.PuntosGanados= Integer.parseInt(PuntosGanada.getText().toString());
