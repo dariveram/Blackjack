@@ -32,6 +32,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     EditText CantBarajas;
     EditText ManosBaraja;
     EditText MinimoPuntos;
+    EditText Acumulado;
 
     Parametro parametro;
 
@@ -46,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         CantBarajas = (EditText) findViewById(R.id.txtBarajas);
         ManosBaraja = (EditText) findViewById(R.id.txtManos);
         MinimoPuntos = (EditText) findViewById(R.id.txtMinimo);
+        Acumulado = (EditText) findViewById(R.id.txtAcumulado);
 
 
        /* parametro.getClass();
@@ -121,6 +123,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 CantBarajas.setText(tokens.nextToken());
                 ManosBaraja.setText(tokens.nextToken());
                 MinimoPuntos.setText(tokens.nextToken());
+                Acumulado.setText(tokens.nextToken());
                 //etRes.setText(todo);
             } catch (Exception e) {
             }
@@ -136,6 +139,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             parametro.setCantBarajas(Integer.parseInt(CantBarajas.getText().toString()));
             parametro.setCantManos(Integer.parseInt(ManosBaraja.getText().toString()));
             parametro.setMinimoPuntos(Integer.parseInt(MinimoPuntos.getText().toString()));
+            parametro.setAcumulado(Integer.parseInt(Acumulado.getText().toString()));
 
 
            guardar = parametro.Guardar(parametro);
@@ -146,7 +150,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                         PuntosPerdida.getText().toString() + Sep +
                         CantBarajas.getText().toString() + Sep +
                         ManosBaraja.getText().toString() + Sep +
-                        MinimoPuntos.getText().toString();
+                        MinimoPuntos.getText().toString()+ Sep +
+                        Acumulado.getText().toString();
                 OutputStreamWriter archivo = new OutputStreamWriter(openFileOutput(
                         NombreArchivo, Activity.MODE_PRIVATE));
                 archivo.write(Texto);
@@ -157,6 +162,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 CantBarajas.setText("");
                 ManosBaraja.setText("");
                 MinimoPuntos.setText("");
+                Acumulado.setText("");
                 archivo.flush();
                 archivo.close();
 
