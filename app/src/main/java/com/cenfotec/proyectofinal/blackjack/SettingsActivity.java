@@ -5,6 +5,7 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,6 +59,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                     Guardar();
 
                 } catch (IOException e) {
+                    Log.d("BLACKJACK", e.toString());
                     e.printStackTrace();
                 }
                 break;
@@ -139,6 +141,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             archivo.flush();
             archivo.close();
         } catch (IOException e) {
+            Log.d("BLACKJACK", e.toString());
         }
         Toast t = Toast.makeText(this, "Los datos fueron grabados",
                 Toast.LENGTH_SHORT);

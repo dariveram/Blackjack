@@ -43,7 +43,7 @@
             android:paddingTop="5dp"/>
         <EditText
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:id = "@+id/txtPuntosPerdidos"
             android:inputType="number"
             android:digits="0123456789"/>
@@ -54,7 +54,7 @@
             android:paddingTop="5dp"/>
         <EditText
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:id = "@+id/txtBarajas"
             android:inputType="number"
             android:digits="0123456789"/>
@@ -65,7 +65,7 @@
             android:paddingTop="5dp"/>
         <EditText
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:id = "@+id/txtManos"
             android:inputType="number"
             android:digits="0123456789"/>
@@ -76,7 +76,7 @@
             android:paddingTop="5dp"/>
         <EditText
             android:layout_width="100dp"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:id = "@+id/txtMinimo"
             android:inputType="number"
             android:digits="0123456789"/>
