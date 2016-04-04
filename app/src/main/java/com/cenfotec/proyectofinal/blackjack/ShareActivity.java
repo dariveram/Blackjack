@@ -32,7 +32,7 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
 
     private static String ID_FB="510565259148680";
 
-
+    Parametro parametro;
 
      TwitterLoginButton loginButton;
 
@@ -45,13 +45,13 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
         TwitterAuthConfig authConfig =  new TwitterAuthConfig("consumerKey", "consumerSecret");
         Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
         TweetComposer.Builder builder = new TweetComposer.Builder(this)
-                .text("just setting up my Fabric.");
+                .text(parametro.getNombreJugador().toString());
         builder.show();
 
         /*TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig));*/
 
-        /*loginButton.setCallback(new Callback<TwitterSession>() {
+        loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
                 // Do something with result, which provides a TwitterSession for making API calls
@@ -61,7 +61,7 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
             public void failure(TwitterException exception) {
                 // Do something on failure
             }
-        });*/
+        });
 
 
 

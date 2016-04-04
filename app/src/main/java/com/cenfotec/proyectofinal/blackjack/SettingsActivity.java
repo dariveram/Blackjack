@@ -127,42 +127,50 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     }
     public void Guardar() {
         try {
-
+            boolean guardar;
             parametro=new Parametro();
 
-            parametro.NombreJugador=NombreJugador.getText().toString();
-            parametro.PuntosGanados= Integer.parseInt(PuntosGanada.getText().toString());
-            parametro.PuntosPerdidos= Integer.parseInt(PuntosPerdida.getText().toString());
-            parametro.CantBarajas= Integer.parseInt(CantBarajas.getText().toString());
-            parametro.CantManos= Integer.parseInt(ManosBaraja.getText().toString());
-            parametro.MinimoPuntos= Integer.parseInt(MinimoPuntos.getText().toString());
-
-            parametro=new Parametro(parametro);
+            parametro.setNombreJugador(NombreJugador.getText().toString());
+            parametro.setPuntosGanados(Integer.parseInt(PuntosGanada.getText().toString()));
+            parametro.setPuntosPerdidos(Integer.parseInt(PuntosPerdida.getText().toString())) ;
+            parametro.setCantBarajas(Integer.parseInt(CantBarajas.getText().toString()));
+            parametro.setCantManos(Integer.parseInt(ManosBaraja.getText().toString()));
+            parametro.setMinimoPuntos(Integer.parseInt(MinimoPuntos.getText().toString()));
 
 
-            Texto = NombreJugador.getText().toString() + Sep +
-                    PuntosGanada.getText().toString() + Sep +
-                    PuntosPerdida.getText().toString() + Sep +
-                    CantBarajas.getText().toString() + Sep +
-                    ManosBaraja.getText().toString() + Sep +
-                    MinimoPuntos.getText().toString();
-            OutputStreamWriter archivo = new OutputStreamWriter(openFileOutput(
-                    NombreArchivo, Activity.MODE_PRIVATE));
-            archivo.write(Texto);
+           guardar = parametro.Guardar(parametro);
 
-            NombreJugador.setText("");
-            PuntosGanada.setText("");
-            PuntosPerdida.setText("");
-            CantBarajas.setText("");
-            ManosBaraja.setText("");
-            MinimoPuntos.setText("");
-            archivo.flush();
-            archivo.close();
+            if (guardar==true){
+                Texto = NombreJugador.getText().toString() + Sep +
+                        PuntosGanada.getText().toString() + Sep +
+                        PuntosPerdida.getText().toString() + Sep +
+                        CantBarajas.getText().toString() + Sep +
+                        ManosBaraja.getText().toString() + Sep +
+                        MinimoPuntos.getText().toString();
+                OutputStreamWriter archivo = new OutputStreamWriter(openFileOutput(
+                        NombreArchivo, Activity.MODE_PRIVATE));
+                archivo.write(Texto);
+
+                NombreJugador.setText("");
+                PuntosGanada.setText("");
+                PuntosPerdida.setText("");
+                CantBarajas.setText("");
+                ManosBaraja.setText("");
+                MinimoPuntos.setText("");
+                archivo.flush();
+                archivo.close();
+
+                Toast t = Toast.makeText(this, "Los datos fueron grabados",
+                        Toast.LENGTH_SHORT);
+                t.show();
+
+            }
+
+
+
         } catch (Exception e) {
             Log.d("BLACKJACK", e.toString());
         }
-        Toast t = Toast.makeText(this, "Los datos fueron grabados",
-                Toast.LENGTH_SHORT);
-        t.show();
+
     }
 }
