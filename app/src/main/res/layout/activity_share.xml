@@ -11,4 +11,35 @@
     android:background="@color/colorBackground"
     tools:context="com.cenfotec.proyectofinal.blackjack.ShareActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:text="DESEA COMPARTIR ?"
+            android:paddingTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnSI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SI"
+                android:onClick="onClick"/>
+            <Button
+                android:id="@+id/btnNO"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NO"
+                android:onClick="onClick"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
