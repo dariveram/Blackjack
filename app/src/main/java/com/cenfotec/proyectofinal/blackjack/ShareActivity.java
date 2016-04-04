@@ -1,5 +1,6 @@
 package com.cenfotec.proyectofinal.blackjack;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -14,11 +15,15 @@ import android.widget.Toast;
 
 
 import com.cenfotec.proyectofinal.blackjack.model.Parametro;
-import com.facebook.FacebookSdk;
+import io.fabric.sdk.android.Fabric;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.Signature;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 
 public class ShareActivity extends AppCompatActivity implements View.OnClickListener {
@@ -26,26 +31,39 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
     private static String ID_FB="510565259148680";
 
 
+
+     TwitterLoginButton loginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        /*try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    "com.facebook.samples.hellofacebook",
-                    PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+        loginButton = (TwitterLoginButton) findViewById(R.id.login_button);
+
+        /*TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
+        Fabric.with(this, new Twitter(authConfig));*/
+
+        loginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                // Do something with result, which provides a TwitterSession for making API calls
             }
-        } catch (PackageManager.NameNotFoundException e) {
 
-        } catch (NoSuchAlgorithmException e) {
+            @Override
+            public void failure(TwitterException exception) {
+                // Do something on failure
+            }
+        });
 
-        }*/
 
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        loginButton.onActivityResult(requestCode, resultCode, data);
 
     }
 
@@ -54,7 +72,7 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
         Button btn = (Button) findViewById(view.getId());
         switch (btn.getId()) {
 
-            case R.id.btnSI:
+            case R.id.login_button:
                 //
                 try {
                     Compartir();

@@ -28,12 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/btnSI"
+            <com.twitter.sdk.android.core.identity.TwitterLoginButton
+                android:id="@+id/login_button"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="SI"
-                android:onClick="onClick"/>
+                android:layout_height="wrap_content" />
             <Button
                 android:id="@+id/btnNO"
                 android:layout_width="wrap_content"
