@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.cenfotec.proyectofinal.blackjack.model.Baraja;
 import com.cenfotec.proyectofinal.blackjack.model.Parametro;
 
 import java.io.BufferedReader;
@@ -46,11 +47,21 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         ManosBaraja = (EditText) findViewById(R.id.txtManos);
         MinimoPuntos = (EditText) findViewById(R.id.txtMinimo);
 
+
+
+        NombreJugador.setText(parametro.NombreJugador);
+        PuntosGanada.setText(parametro.PuntosGanados);
+        PuntosPerdida.setText(parametro.PuntosPerdidos);
+        CantBarajas.setText(parametro.CantBarajas);
+        ManosBaraja.setText(parametro.CantManos);
+        MinimoPuntos.setText(parametro.MinimoPuntos);
+
     }
 
+
     @Override
-    public void onClick(View view){
-        Button btn = (Button) findViewById(view.getId());
+    public void onClick(View v){
+        Button btn = (Button) findViewById(v.getId());
         switch (btn.getId()) {
 
             case R.id.btnGuardar:
@@ -58,7 +69,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 try {
                     Guardar();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     Log.d("BLACKJACK", e.toString());
                     e.printStackTrace();
                 }
@@ -68,7 +79,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
                 try {
                     Cargar();
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 break;
@@ -76,7 +87,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
 
-    };
+    }
 
     private boolean existe(String[] archivos, String archbusca) {
         for (int f = 0; f < archivos.length; f++)
@@ -85,7 +96,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         return false;
     }
 
-    public void Cargar() throws IOException {
+    public void Cargar() {
         //etRes = (EditText) findViewById(R.id.etRes);
         String[] archivos = fileList();
         if (existe(archivos, NombreArchivo))
@@ -110,37 +121,45 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 ManosBaraja.setText(tokens.nextToken());
                 MinimoPuntos.setText(tokens.nextToken());
                 //etRes.setText(todo);
-            } catch (IOException e) {
+            } catch (Exception e) {
             }
     }
-    public void Guardar() throws IOException {
+    public void Guardar() {
         try {
 
-            parametro.initialize();
+            parametro=new Parametro();
 
-            parametro.NombreJugador=NombreJugador.toString();
-            parametro.PuntosGanados= Integer.parseInt(PuntosGanada.toString());
-            parametro.PuntosPerdidos= Integer.parseInt(PuntosPerdida.toString());
-            parametro.CantBarajas= Integer.parseInt(CantBarajas.toString());
-            parametro.CantManos= Integer.parseInt(ManosBaraja.toString());
-            parametro.MinimoPuntos= Integer.parseInt(MinimoPuntos.toString());
+            parametro.getClass();
+
+            parametro.NombreJugador=NombreJugador.getText().toString();
+            parametro.PuntosGanados= Integer.parseInt(PuntosGanada.getText().toString());
+            parametro.PuntosPerdidos= Integer.parseInt(PuntosPerdida.getText().toString());
+            parametro.CantBarajas= Integer.parseInt(CantBarajas.getText().toString());
+            parametro.CantManos= Integer.parseInt(ManosBaraja.getText().toString());
+            parametro.MinimoPuntos= Integer.parseInt(MinimoPuntos.getText().toString());
+
+            parametro=new Parametro(parametro);
+
 
             Texto = NombreJugador.getText().toString() + Sep +
                     PuntosGanada.getText().toString() + Sep +
                     PuntosPerdida.getText().toString() + Sep +
+                    CantBarajas.getText().toString() + Sep +
                     ManosBaraja.getText().toString() + Sep +
                     MinimoPuntos.getText().toString();
             OutputStreamWriter archivo = new OutputStreamWriter(openFileOutput(
                     NombreArchivo, Activity.MODE_PRIVATE));
             archivo.write(Texto);
+
             NombreJugador.setText("");
             PuntosGanada.setText("");
             PuntosPerdida.setText("");
+            CantBarajas.setText("");
             ManosBaraja.setText("");
             MinimoPuntos.setText("");
             archivo.flush();
             archivo.close();
-        } catch (IOException e) {
+        } catch (Exception e) {
             Log.d("BLACKJACK", e.toString());
         }
         Toast t = Toast.makeText(this, "Los datos fueron grabados",

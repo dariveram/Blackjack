@@ -29,6 +29,10 @@ public class Parametro {
         this.Acumulado =0;
     }
 
+    public Parametro() {
+        this.initialize();
+    }
+
     public Parametro(Parametro Param){
         this.NombreJugador =Param.NombreJugador;
         this.PuntosGanados =Param.PuntosGanados;
