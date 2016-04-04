@@ -21,9 +21,11 @@ import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
 
 public class ShareActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,10 +42,16 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_share);
         loginButton = (TwitterLoginButton) findViewById(R.id.login_button);
 
+        TwitterAuthConfig authConfig =  new TwitterAuthConfig("consumerKey", "consumerSecret");
+        Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
+        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+                .text("just setting up my Fabric.");
+        builder.show();
+
         /*TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig));*/
 
-        loginButton.setCallback(new Callback<TwitterSession>() {
+        /*loginButton.setCallback(new Callback<TwitterSession>() {
             @Override
             public void success(Result<TwitterSession> result) {
                 // Do something with result, which provides a TwitterSession for making API calls
@@ -53,7 +61,7 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
             public void failure(TwitterException exception) {
                 // Do something on failure
             }
-        });
+        });*/
 
 
 
