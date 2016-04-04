@@ -10,5 +10,98 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorBackground"
     tools:context="com.cenfotec.proyectofinal.blackjack.SettingsActivity">
-
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nombre jugador  "
+            android:paddingTop="5dp"/>
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:id = "@+id/txtNombreJugador"
+            android:inputType="text" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puntos por partida ganada(+)"
+            android:paddingTop="5dp"/>
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:id = "@+id/txtPuntosGanados"
+            android:inputType="number"
+            android:digits="0123456789"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puntos por partida perdida(-)"
+            android:paddingTop="5dp"/>
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:id = "@+id/txtPuntosPerdidos"
+            android:inputType="number"
+            android:digits="0123456789"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cantidad de barajas"
+            android:paddingTop="5dp"/>
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:id = "@+id/txtBarajas"
+            android:inputType="number"
+            android:digits="0123456789"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Manos para barajar"
+            android:paddingTop="5dp"/>
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:id = "@+id/txtManos"
+            android:inputType="number"
+            android:digits="0123456789"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mínimo de puntos"
+            android:paddingTop="5dp"/>
+        <EditText
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:id = "@+id/txtMinimo"
+            android:inputType="number"
+            android:digits="0123456789"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id = "@+id/txtAcumulado"
+            android:visibility="invisible"
+            android:paddingTop="5dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnGuardar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Guardar"
+                android:onClick="onClick"/>
+            <Button
+                android:id="@+id/btnCargar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cargar"
+                android:onClick="onClick"/>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>
