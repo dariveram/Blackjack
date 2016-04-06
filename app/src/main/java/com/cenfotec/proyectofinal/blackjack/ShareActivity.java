@@ -28,6 +28,8 @@ import com.twitter.sdk.android.core.TwitterCore;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.twitter.sdk.android.core.models.Tweet;
+import com.twitter.sdk.android.core.models.TweetBuilder;
 import com.twitter.sdk.android.core.models.User;
 import com.twitter.sdk.android.tweetcomposer.TweetComposer;
 
@@ -157,6 +159,7 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
         }
 
     }
+
 
     public void Compartir() {
         Parametro p = new Parametro();

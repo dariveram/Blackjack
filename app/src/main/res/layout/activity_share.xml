@@ -35,15 +35,16 @@
                 android:layout_height="wrap_content"
 
                 android:onClick="onClick"/>
-            <Button
-                android:id="@+id/btnSI"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Compartir"
-                android:visibility="invisible"
-                android:onClick="onClick"/>
+
 
         </LinearLayout>
+        <Button
+            android:id="@+id/btnSI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Compartir"
+
+            android:onClick="onClick"/>
         <ImageView android:id="@+id/ivTwitterImageChoose"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
