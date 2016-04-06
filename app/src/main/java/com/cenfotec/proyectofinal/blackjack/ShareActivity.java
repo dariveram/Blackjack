@@ -44,9 +44,9 @@ public class ShareActivity extends AppCompatActivity implements View.OnClickList
 
         TwitterAuthConfig authConfig =  new TwitterAuthConfig("consumerKey", "consumerSecret");
         Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
-        TweetComposer.Builder builder = new TweetComposer.Builder(this)
-                .text(parametro.getNombreJugador().toString());
-        builder.show();
+//        TweetComposer.Builder builder = new TweetComposer.Builder(this)
+//                .text(parametro.getNombreJugador().toString());
+//        builder.show();
 
         /*TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
         Fabric.with(this, new Twitter(authConfig));*/

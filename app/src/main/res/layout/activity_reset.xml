@@ -15,14 +15,11 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="10dp">
-
-
         <TextView
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:text="DESEA REINICIAR LOS PARAMETROS ?"
+            android:text="¿Desea borrar los parámetros?"
             android:paddingTop="5dp"/>
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,13 +28,13 @@
                 android:id="@+id/btnSI"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SI"
+                android:text="Si"
                 android:onClick="onClick"/>
             <Button
                 android:id="@+id/btnNO"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NO"
+                android:text="No"
                 android:onClick="onClick"/>
         </LinearLayout>
     </LinearLayout>
