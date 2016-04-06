@@ -23,6 +23,9 @@
         <activity android:name=".SettingsActivity" />
         <activity android:name=".ResetActivity" />
         <activity android:name=".ShareActivity"></activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="****************" />
     </application>
 
 </manifest>

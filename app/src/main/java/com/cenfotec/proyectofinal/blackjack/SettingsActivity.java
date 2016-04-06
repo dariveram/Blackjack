@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.cenfotec.proyectofinal.blackjack.model.Parametro;
 
+import io.fabric.sdk.android.InitializationCallback;
+
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText txtUsuarioNombre
@@ -27,8 +29,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        txtUsuarioNombre = (EditText)findViewById(R.id.txtUsuarioNombre);
-        txtComputadoraNombre = (EditText)findViewById(R.id.txtComputadoraNombre);
+        txtUsuarioNombre = (EditText)findViewById(R.id.txtusuarionombre);
+        txtComputadoraNombre = (EditText)findViewById(R.id.txtcomputadoranombre);
         txtUsuarioTotalPuntos = (EditText)findViewById(R.id.txtUsuarioTotalPuntos);
         txtComputadoraTotalPuntos = (EditText)findViewById(R.id.txtComputadoraTotalPuntos);
         txtCantidadBarajas = (EditText)findViewById(R.id.txtCantidadBarajas);
@@ -97,6 +99,56 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     private boolean validar(){
         //TODO: Validar que los datos se encuentren en el formato correcto.
+        if (txtUsuarioNombre.getText().toString() == "".toString()) {
+            Toast.makeText(getApplicationContext(), "El nombre de usuario no puede estar vacío", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (txtComputadoraNombre.getText().toString() == "".toString()) {
+            Toast.makeText(getApplicationContext(), "El nombre de la computadora no puede estar vacío", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (txtCantidadBarajas.getText().toString() == "".toString()) {
+            Toast.makeText(getApplicationContext(), "La cantidad de barajas no puede estar vacío", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (Integer.valueOf(txtCantidadBarajas.getText().toString()) <= 0) {
+            Toast.makeText(getApplicationContext(), "La cantidad de barajas debe ser mayor a cero", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (txtCantidadPartidasBarajar.getText().toString() == "".toString()) {
+            Toast.makeText(getApplicationContext(), "La cantidad de partidas para barajar no puede estar vacío", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (Integer.valueOf(txtCantidadPartidasBarajar.getText().toString()) <= 0) {
+            Toast.makeText(getApplicationContext(), "La cantidad de partidas para barajar debe ser mayor a cero", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (txtPuntosPartidaGanada.getText().toString() == "".toString()) {
+            Toast.makeText(getApplicationContext(), "La cantidad de puntos por partida ganada no puede estar vacío", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (Integer.valueOf(txtPuntosPartidaGanada.getText().toString()) <= 0) {
+            Toast.makeText(getApplicationContext(), "La cantidad de puntos por partida ganada debe ser mayor a cero", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (txtPuntosPartidaPerdida.getText().toString() == "".toString()) {
+            Toast.makeText(getApplicationContext(), "La cantidad de puntos por partida perdida no puede estar vacío", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (Integer.valueOf(txtPuntosPartidaPerdida.getText().toString()) <= 0) {
+            Toast.makeText(getApplicationContext(), "La cantidad de puntos por partida perdida debe ser mayor a cero", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (txtTwitterUsuario.getText().toString() == "".toString()) {
+            Toast.makeText(getApplicationContext(), "El usuario Twitter no puede estar vacío", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (txtTwitterClave.getText().toString() == "".toString()) {
+            Toast.makeText(getApplicationContext(), "El password Twitter no puede estar vacío", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
         return true;
     }
 }
