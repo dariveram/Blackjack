@@ -46,7 +46,7 @@
 
         <TextView
             android:id="@+id/txtUsuarioPuntos"
-            android:text="##"
+            android:text=""
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"/>
@@ -57,7 +57,7 @@
 
         <TextView
             android:id="@+id/txtComputadoraPuntos"
-            android:text="##"
+            android:text=""
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:textAlignment="center"/>

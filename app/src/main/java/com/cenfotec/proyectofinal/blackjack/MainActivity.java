@@ -112,8 +112,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txtUsuarioNombre.setText("Usuario");
             txtComputadoraNombre.setText("Computadora");
             txtTotalPuntos.setText("");
-            txtUsuarioPuntos.setText("##");
-            txtComputadoraPuntos.setText("##");
+            txtUsuarioPuntos.setText("");
+            txtComputadoraPuntos.setText("");
         }
     }
 
@@ -141,22 +141,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void configurar(View v){
-        Intent intent = new Intent(v.getContext(), SettingsActivity.class);
-        startActivity(intent);
+        if (!btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
+            Intent intent = new Intent(v.getContext(), SettingsActivity.class);
+            startActivity(intent);
+        }else {
+            Toast.makeText(getApplicationContext(), "Hay una partida en juego", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void reiniciar(View v){
-        Intent intent = new Intent(v.getContext(), ResetActivity.class);
-        startActivity(intent);
+        if (!btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
+            Intent intent = new Intent(v.getContext(), ResetActivity.class);
+            startActivity(intent);
+        }else {
+            Toast.makeText(getApplicationContext(), "Hay una partida en juego", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void compartir(View v){
         if (parametro.esValido()){
-            String msg = "Hola! He ganado un total de " + parametro.getUsuarioTotalPuntos() + " puntos en Blackjack!";
-            TwitterAuthConfig authConfig =  new TwitterAuthConfig(parametro.getTwitterUsuario(), parametro.getTwitterClave());
-            Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
-            TweetComposer.Builder builder = new TweetComposer.Builder(this).text(msg);
-            builder.show();
+            if (!btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
+                String msg = "Hola! He ganado un total de " + parametro.getUsuarioTotalPuntos() + " puntos en Blackjack!";
+                TwitterAuthConfig authConfig =  new TwitterAuthConfig(parametro.getTwitterUsuario(), parametro.getTwitterClave());
+                Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
+                TweetComposer.Builder builder = new TweetComposer.Builder(this).text(msg);
+                builder.show();
+            }else {
+                Toast.makeText(getApplicationContext(), "Hay una partida en juego", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
@@ -249,7 +261,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             computadora.Baraja().setMostrarPrimeraCarta(true);
             usuario.Baraja().setMostrarPrimeraCarta(true);
             refrescarListas();
-            Toast.makeText(getApplicationContext(), "Ganador: " + ganador, Toast.LENGTH_SHORT).show();
             asignarPuntosGanador(ganador);
             btnJugar.setText("Jugar");
         }
@@ -259,9 +270,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (ganador.trim().toLowerCase()) {
             case "usuario":
                 parametro.usuarioGana();
+                Toast.makeText(getApplicationContext(), "Has ganado", Toast.LENGTH_SHORT).show();
                 break;
             case "computadora":
                 parametro.usuarioPierde();
+                Toast.makeText(getApplicationContext(), "Has perdido", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
