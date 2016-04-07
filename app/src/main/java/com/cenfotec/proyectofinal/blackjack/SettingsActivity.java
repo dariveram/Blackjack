@@ -27,8 +27,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        txtUsuarioNombre = (EditText)findViewById(R.id.txtUsuarioNombre);
-        txtComputadoraNombre = (EditText)findViewById(R.id.txtComputadoraNombre);
+        txtUsuarioNombre = (EditText)findViewById(R.id.txtusuarioNombre);
+        txtComputadoraNombre = (EditText)findViewById(R.id.txtcomputadoraNombre);
         txtUsuarioTotalPuntos = (EditText)findViewById(R.id.txtUsuarioTotalPuntos);
         txtComputadoraTotalPuntos = (EditText)findViewById(R.id.txtComputadoraTotalPuntos);
         txtCantidadBarajas = (EditText)findViewById(R.id.txtCantidadBarajas);
