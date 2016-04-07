@@ -15,6 +15,11 @@ import com.cenfotec.proyectofinal.blackjack.model.Jugador;
 import com.cenfotec.proyectofinal.blackjack.model.Parametro;
 import com.cenfotec.proyectofinal.blackjack.model.Repartidor;
 import com.cenfotec.proyectofinal.blackjack.model.enumeration.CartaValor;
+import com.twitter.sdk.android.core.TwitterAuthConfig;
+import com.twitter.sdk.android.core.TwitterCore;
+import com.twitter.sdk.android.tweetcomposer.TweetComposer;
+
+import io.fabric.sdk.android.Fabric;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private final static int _PuntosGana = 21;
@@ -146,8 +151,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void compartir(View v){
-        Intent intent = new Intent(v.getContext(), ShareActivity.class);
-        startActivity(intent);
+        if (parametro.esValido()){
+            String msg = "Hola! He ganado un total de " + parametro.getUsuarioTotalPuntos() + " puntos en Blackjack!";
+            TwitterAuthConfig authConfig =  new TwitterAuthConfig(parametro.getTwitterUsuario(), parametro.getTwitterClave());
+            Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
+            TweetComposer.Builder builder = new TweetComposer.Builder(this).text(msg);
+            builder.show();
+        }
     }
 
     private void iniciarJuego(){

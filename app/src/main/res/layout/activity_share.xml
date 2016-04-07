@@ -10,40 +10,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorBackground"
     tools:context="com.cenfotec.proyectofinal.blackjack.ShareActivity">
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="10dp">
-
-
         <TextView
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:text="DESEA COMPARTIR ?"
+            android:text="Compartir puntos ganados"
             android:paddingTop="5dp"/>
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <com.twitter.sdk.android.core.identity.TwitterLoginButton
                 android:id="@+id/login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-                android:onClick="onClick"/>
-
-
+                android:onClick="onClick"
+                android:visibility="visible"/>
         </LinearLayout>
         <Button
             android:id="@+id/btnSI"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Compartir"
-
             android:onClick="onClick"/>
         <ImageView android:id="@+id/ivTwitterImageChoose"
             android:layout_width="wrap_content"
