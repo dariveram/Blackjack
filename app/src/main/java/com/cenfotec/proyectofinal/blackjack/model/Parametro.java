@@ -2,11 +2,10 @@ package com.cenfotec.proyectofinal.blackjack.model;
 
 import android.content.Context;
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-
-/*import org.apache.commons.codec.binary.Base64;*/
+//import javax.crypto.Cipher;
+//import javax.crypto.spec.IvParameterSpec;
+//import javax.crypto.spec.SecretKeySpec;
+//import org.apache.commons.codec.binary.Base64;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -140,18 +139,50 @@ public class Parametro {
         this.twitterClave = "";
     }
 
+    public boolean esValido(){
+        if ((this.usuarioNombre != "")
+                && (this.computadoraNombre != "")
+                && (this.cantidadBarajas > 0)
+                && (this.cantidadPartidasBarajar > 0)
+                && (this.minimoPuntosComputadora > 0)
+                && (this.puntosPartidaGanada > 0)
+                && (this.puntosPartidaPerdida > 0)
+                && (this.twitterUsuario != "")
+                && (this.twitterClave != "")){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void usuarioGana(){
+        this.usuarioTotalPuntos += this.puntosPartidaGanada;
+        this.computadoraTotalPuntos -= this.puntosPartidaPerdida;
+        if (this.computadoraTotalPuntos < 0){
+            this.computadoraTotalPuntos = 0;
+        }
+    }
+
+    public void usuarioPierde(){
+        this.computadoraTotalPuntos += this.puntosPartidaGanada;
+        this.usuarioTotalPuntos -= this.puntosPartidaPerdida;
+        if (this.usuarioTotalPuntos < 0){
+            this.usuarioTotalPuntos = 0;
+        }
+    }
+
     public boolean guardar(Context ctx){
-        String s = usuarioNombre
-                + separador + computadoraNombre
-                + separador + usuarioTotalPuntos
-                + separador + computadoraTotalPuntos
-                + separador + cantidadBarajas
-                + separador + cantidadPartidasBarajar
-                + separador + minimoPuntosComputadora
-                + separador + puntosPartidaGanada
-                + separador + puntosPartidaPerdida
-                + separador + twitterUsuario
-                + separador + twitterClave;
+        String s = this.usuarioNombre
+                + separador + this.computadoraNombre
+                + separador + this.usuarioTotalPuntos
+                + separador + this.computadoraTotalPuntos
+                + separador + this.cantidadBarajas
+                + separador + this.cantidadPartidasBarajar
+                + separador + this.minimoPuntosComputadora
+                + separador + this.puntosPartidaGanada
+                + separador + this.puntosPartidaPerdida
+                + separador + this.twitterUsuario
+                + separador + this.twitterClave;
         return guardarArchivo(ctx, encriptar(s));
     }
 
@@ -207,6 +238,7 @@ public class Parametro {
 
     public boolean borrar(Context ctx){
         ctx.deleteFile(nombreArchivo);
+        this.initialize();
         return true;
     }
 

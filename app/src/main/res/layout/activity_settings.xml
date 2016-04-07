@@ -64,7 +64,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtCantidadBarajas"/>
+                android:id="@+id/txtCantidadBarajas"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -73,7 +74,8 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtCantidadPartidasBarajar"/>
+                android:id="@+id/txtCantidadPartidasBarajar"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,30 +84,33 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtMinimoPuntosComputadora"/>
+                android:id="@+id/txtMinimoPuntosComputadora"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cantidad de puntos por partida ganada"/>
+                android:text="Cantidad de puntos por partida ganada (suma)"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtPuntosPartidaGanada"/>
+                android:id="@+id/txtPuntosPartidaGanada"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cantidad de puntos por partida perdida"/>
+                android:text="Cantidad de puntos por partida perdida (resta)"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/txtPuntosPartidaPerdida"/>
+                android:id="@+id/txtPuntosPartidaPerdida"
+                android:inputType="number"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="E-Mail o nombre de usuario de Twitter"/>
+                android:text="Nombre de usuario de Twitter"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

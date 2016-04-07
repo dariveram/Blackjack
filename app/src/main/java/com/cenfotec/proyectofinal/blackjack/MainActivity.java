@@ -12,20 +12,16 @@ import android.widget.Toast;
 
 import com.cenfotec.proyectofinal.blackjack.adapter.BarajaAdapter;
 import com.cenfotec.proyectofinal.blackjack.model.Jugador;
+import com.cenfotec.proyectofinal.blackjack.model.Parametro;
 import com.cenfotec.proyectofinal.blackjack.model.Repartidor;
 import com.cenfotec.proyectofinal.blackjack.model.enumeration.CartaValor;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private final static int _CantidadBarajas = 3;
-    private final static int _CantidadPartidasBarajar = 10;
-    private final static int _MinimoPuntosComputadora = 16;
-
     private final static int _PuntosGana = 21;
     private int contPartidas;
-    private int totalPuntos;
 
-    TextView txtUsuarioNombre, txtComputadoraNombre, txtUsuarioPuntos, txtComputadoraPuntos, txtTotalPuntos, txtPartidasJugadas, txtCartasRestantes;
+    TextView txtUsuarioNombre, txtComputadoraNombre, txtUsuarioPuntos, txtComputadoraPuntos,
+            txtTotalPuntos, txtPartidasJugadas, txtCartasRestantes;
     ListView lvUsuario, lvComputadora;
     ImageView imgCartaNueva;
     Button btnJugar, btnConfigurar, btnReiniciar, btnCompartir;
@@ -34,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Jugador computadora;
     Jugador usuario;
+
+    Parametro parametro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +55,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnConfigurar = (Button)findViewById(R.id.btnConfigurar);
         btnReiniciar = (Button)findViewById(R.id.btnReiniciar);
         btnCompartir = (Button)findViewById(R.id.btnCompartir);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
         cargarParametros();
         iniciarJuego();
     }
@@ -96,27 +98,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void cargarParametros(){
-        //TODO: Cargar parámetros con método de Humberto.
-        totalPuntos = 0; //Cargar puntos histórico.
-        txtTotalPuntos.setText(String.valueOf(totalPuntos));
+        parametro = new Parametro();
+        if (parametro.leer(getApplicationContext())){
+            txtUsuarioNombre.setText(parametro.getUsuarioNombre());
+            txtComputadoraNombre.setText(parametro.getComputadoraNombre());
+            txtTotalPuntos.setText(String.valueOf(parametro.getUsuarioTotalPuntos()));
+        }else{
+            txtUsuarioNombre.setText("Usuario");
+            txtComputadoraNombre.setText("Computadora");
+            txtTotalPuntos.setText("");
+            txtUsuarioPuntos.setText("##");
+            txtComputadoraPuntos.setText("##");
+        }
     }
 
     private void jugar(){
-        if (btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
-            //Usuario inicia juego.
-            btnJugar.setText("Listo");
-            contPartidas += 1;
-            if (contPartidas > _CantidadPartidasBarajar){
-                iniciarJuego();
-                contPartidas = 1;
+        if (parametro.esValido()){
+            if (btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
+                //Usuario inicia juego.
+                btnJugar.setText("Listo");
+                contPartidas += 1;
+                if (contPartidas > parametro.getCantidadPartidasBarajar()){
+                    iniciarJuego();
+                    contPartidas = 1;
+                }
+                iniciarPartida();
+                txtPartidasJugadas.setText(String.valueOf(contPartidas));
+            }else{
+                //Usuario finaliza juego.
+                btnJugar.setText("Jugar");
+                //Juega la computadora.
+                jugarComputadora();
             }
-            iniciarPartida();
-            txtPartidasJugadas.setText(String.valueOf(contPartidas));
-        }else{
-            //Usuario finaliza juego.
-            btnJugar.setText("Jugar");
-            //Juega la computadora.
-            jugarComputadora();
+        }else {
+            Toast.makeText(getApplicationContext(), "Por favor configure el juego", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -136,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void iniciarJuego(){
-        repartidor = new Repartidor(_CantidadBarajas);
+        repartidor = new Repartidor(parametro.getCantidadBarajas());
         txtCartasRestantes.setText(String.valueOf(repartidor.Baraja().obtenerTamanoBaraja()));
         Toast.makeText(getApplicationContext(), "Nueva Baraja", Toast.LENGTH_SHORT).show();
         contPartidas = 0;
@@ -189,7 +204,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         do {
             int puntosComputadora = computadora.Baraja().contarCartasBaraja();
             int puntosUsuario = usuario.Baraja().contarCartasBaraja();
-            nuevaCartaComputadora = ((puntosComputadora<_MinimoPuntosComputadora) || (puntosComputadora<puntosUsuario)) && (puntosComputadora<_PuntosGana) && !(puntosUsuario>_PuntosGana);
+            nuevaCartaComputadora = ((puntosComputadora<parametro.getMinimoPuntosComputadora()) || (puntosComputadora<puntosUsuario)) && (puntosComputadora<_PuntosGana) && !(puntosUsuario>_PuntosGana);
             if (nuevaCartaComputadora){
                 nuevaCartaComputadora();
             }
@@ -233,16 +248,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void asignarPuntosGanador(String ganador){
         switch (ganador.trim().toLowerCase()) {
             case "usuario":
-                //TODO
-                totalPuntos += 1;
-                txtTotalPuntos.setText(String.valueOf(totalPuntos));
+                parametro.usuarioGana();
                 break;
             case "computadora":
-                //TODO
+                parametro.usuarioPierde();
                 break;
             default:
                 break;
         }
+        if (!parametro.guardar(getApplicationContext())){
+            Toast.makeText(getApplicationContext(), "Error al asignar puntos al ganador", Toast.LENGTH_SHORT).show();
+        }
+        txtTotalPuntos.setText(String.valueOf(parametro.getUsuarioTotalPuntos()));
     }
 
     private void agregarCarta(String j){
