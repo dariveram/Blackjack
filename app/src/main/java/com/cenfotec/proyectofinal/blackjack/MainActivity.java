@@ -270,11 +270,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (ganador.trim().toLowerCase()) {
             case "usuario":
                 parametro.usuarioGana();
-                Toast.makeText(getApplicationContext(), "Has ganado", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Has ganado!", Toast.LENGTH_SHORT).show();
                 break;
             case "computadora":
                 parametro.usuarioPierde();
-                Toast.makeText(getApplicationContext(), "Has perdido", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Has perdido. Intentalo de nuevo!", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
