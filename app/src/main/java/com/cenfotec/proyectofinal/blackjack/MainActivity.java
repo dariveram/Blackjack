@@ -107,14 +107,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (parametro.leer(getApplicationContext())){
             txtUsuarioNombre.setText(parametro.getUsuarioNombre());
             txtComputadoraNombre.setText(parametro.getComputadoraNombre());
-            txtTotalPuntos.setText(String.valueOf(parametro.getUsuarioTotalPuntos()));
         }else{
             txtUsuarioNombre.setText("Usuario");
-            txtComputadoraNombre.setText("Computadora");
-            txtTotalPuntos.setText("");
+            txtComputadoraNombre.setText("Computador");
             txtUsuarioPuntos.setText("");
             txtComputadoraPuntos.setText("");
         }
+        txtTotalPuntos.setText(String.valueOf(parametro.getUsuarioTotalPuntos()));
     }
 
     private void jugar(){
@@ -141,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void configurar(View v){
-        if (!btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
+        if (btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
             Intent intent = new Intent(v.getContext(), SettingsActivity.class);
             startActivity(intent);
         }else {
@@ -150,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void reiniciar(View v){
-        if (!btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
+        if (btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
             Intent intent = new Intent(v.getContext(), ResetActivity.class);
             startActivity(intent);
         }else {
@@ -160,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void compartir(View v){
         if (parametro.esValido()){
-            if (!btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
+            if (btnJugar.getText().toString().trim().toLowerCase().equals("jugar")){
                 String msg = "Hola! He ganado un total de " + parametro.getUsuarioTotalPuntos() + " puntos en Blackjack!";
                 TwitterAuthConfig authConfig =  new TwitterAuthConfig(parametro.getTwitterUsuario(), parametro.getTwitterClave());
                 Fabric.with(this, new TwitterCore(authConfig), new TweetComposer());
@@ -169,6 +168,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }else {
                 Toast.makeText(getApplicationContext(), "Hay una partida en juego", Toast.LENGTH_SHORT).show();
             }
+        }else {
+            Toast.makeText(getApplicationContext(), "No hay parámetros válidos", Toast.LENGTH_SHORT).show();
         }
     }
 
