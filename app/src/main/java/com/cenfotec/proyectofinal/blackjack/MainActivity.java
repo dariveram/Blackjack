@@ -275,7 +275,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case "computadora":
                 parametro.usuarioPierde();
-                Toast.makeText(getApplicationContext(), "Has perdido. Intentalo de nuevo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Has perdido. Inténtalo de nuevo!", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
