@@ -6,12 +6,7 @@ import java.util.ArrayList;
  * Created by drivera on 2016-03-22.
  */
 public class Repartidor {
-
-    private static final int MAX_PARTIDAS = 10;
-
     private int cantidadBarajas;
-    private int cantidadPartidas;
-
     private Baraja baraja;
 
     public Baraja Baraja() {
@@ -24,7 +19,6 @@ public class Repartidor {
     }
 
     private void initialize(){
-        this.cantidadPartidas = 0;
         this.baraja = new Baraja(new ArrayList<Carta>());
         ArrayList<Baraja> lstBaraja = new ArrayList<>(this.cantidadBarajas);
         for (int i=0; i<this.cantidadBarajas; i++){
@@ -39,13 +33,6 @@ public class Repartidor {
             }
         }
         this.baraja.revolverBaraja();
-    }
-
-    public void aumentarPartida(){
-        this.cantidadPartidas += 1;
-        if (this.cantidadPartidas > MAX_PARTIDAS) {
-            this.initialize();
-        }
     }
 
 }

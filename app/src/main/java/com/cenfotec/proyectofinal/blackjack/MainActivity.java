@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             txtComputadoraNombre.setText(parametro.getComputadoraNombre());
         }else{
             txtUsuarioNombre.setText("Usuario");
-            txtComputadoraNombre.setText("Computador");
+            txtComputadoraNombre.setText("Computadora");
             txtUsuarioPuntos.setText("");
             txtComputadoraPuntos.setText("");
         }
@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (contPartidas > parametro.getCantidadPartidasBarajar()){
                     iniciarJuego();
                     contPartidas = 1;
+                    Toast.makeText(getApplicationContext(), "Nueva Baraja", Toast.LENGTH_SHORT).show();
                 }
                 iniciarPartida();
                 txtPartidasJugadas.setText(String.valueOf(contPartidas));
@@ -176,7 +177,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void iniciarJuego(){
         repartidor = new Repartidor(parametro.getCantidadBarajas());
         txtCartasRestantes.setText(String.valueOf(repartidor.Baraja().obtenerTamanoBaraja()));
-        Toast.makeText(getApplicationContext(), "Nueva Baraja", Toast.LENGTH_SHORT).show();
         contPartidas = 0;
         txtPartidasJugadas.setText(String.valueOf(contPartidas));
     }

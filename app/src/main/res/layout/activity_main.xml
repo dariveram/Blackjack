@@ -23,6 +23,8 @@
             android:text="Usuario"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorText"
             android:textAlignment="center"/>
 
         <TextView
@@ -31,9 +33,11 @@
 
         <TextView
             android:id="@+id/txtComputadoraNombre"
-            android:text="Computador"
+            android:text="Computadora"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorText"
             android:textAlignment="center"/>
 
     </LinearLayout>
@@ -49,6 +53,8 @@
             android:text=""
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorText"
             android:textAlignment="center"/>
 
         <TextView
@@ -60,6 +66,8 @@
             android:text=""
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:textColor="@color/colorText"
             android:textAlignment="center"/>
 
     </LinearLayout>
@@ -79,7 +87,7 @@
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="15dp">
+            android:paddingLeft="11dp">
 
             <ImageView
                 android:id="@+id/imgCartaNueva"
@@ -87,6 +95,10 @@
                 android:layout_height="100dp"
                 android:src="@drawable/back"
                 android:onClick="onClick"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="6dp" />
 
             <Button
                 android:id="@+id/btnJugar"
@@ -138,6 +150,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/colorText"
                 android:textAlignment="center"/>
 
             <TextView
@@ -147,6 +161,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
+                android:paddingRight="15dp"
+                android:textColor="@color/colorText"
                 android:textAlignment="center"/>
 
             <TextView
@@ -157,6 +173,7 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textAlignment="center"
+                android:textColor="@color/colorText"
                 android:visibility="invisible"/>
 
             <TextView
@@ -167,6 +184,7 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textAlignment="center"
+                android:textColor="@color/colorText"
                 android:visibility="invisible"/>
 
         </LinearLayout>
