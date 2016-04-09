@@ -192,6 +192,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         verificaValorAs();
         refrescarListas();
+
+        if (computadora.Baraja().contarCartasBaraja()==_PuntosGana){
+            asignarGanador();
+        }
     }
 
     private void verificaValorAs(){
